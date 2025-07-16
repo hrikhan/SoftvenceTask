@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:softvence_task/controllar/home_controllar.dart';
 import 'package:softvence_task/utility/colors.dart';
 import 'package:softvence_task/widgets/notch.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
   @override
@@ -201,27 +203,30 @@ class HomePage extends StatelessWidget {
                           15.verticalSpace,
                           Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10),
-                            child: Container(
-                              height: 28.h,
-                              width: 146.5.w,
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    AppColors.appPrimaryColor1,
-                                    AppColors.appPrimaryColor2,
-                                  ],
+                            child: GestureDetector(
+                              onTap: controller.startPayment,
+                              child: Container(
+                                height: 28.h,
+                                width: 146.5.w,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      AppColors.appPrimaryColor1,
+                                      AppColors.appPrimaryColor2,
+                                    ],
+                                  ),
+                                  borderRadius: BorderRadius.circular(24.r),
                                 ),
-                                borderRadius: BorderRadius.circular(24.r),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Purchase Now',
-                                  style: GoogleFonts.roboto(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
+                                child: Center(
+                                  child: Text(
+                                    'Purchase Now',
+                                    style: GoogleFonts.roboto(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    ),
                                   ),
                                 ),
                               ),
